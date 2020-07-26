@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        app:errorTextColor="@android:color/holo_red_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etEmailId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/str_hint_email_id"
+        android:textStyle="normal"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
+        android:imeActionLabel="Next" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorTextColor="@android:color/holo_red_light"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tiEmail">
+   <com.google.android.material.textfield.TextInputEditText
+       android:id="@+id/etPassword"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:hint="@string/str_hint_password"
+       android:textStyle="normal"
+       android:imeOptions="actionDone"
+       android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+   <Button
+       android:id="@+id/btnLogin"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginEnd="@dimen/_30sdp"
+       android:layout_marginBottom="@dimen/_30sdp"
+       android:clickable="true"
+       android:focusable="true"
+       app:backgroundTint="@color/colorPrimary"
+       app:elevation="2dp"
+       android:textStyle="bold"
+       android:textColor="@android:color/white"
+       android:text="@string/str_login"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:srcCompat="@drawable/ic_arrow_icon"
+       android:layout_marginRight="@dimen/_30sdp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

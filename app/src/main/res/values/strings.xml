@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">shail_talati_practical_task</string>
+    <string name="str_hint_email_id">Please Enter your Email Id</string>
+    <string name="str_hint_password">Please Enter Password</string>
+    <string name="str_login">Login</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="str_home">Home</string>
+    <string name="str_invalid_email">Invalid email address</string>
+    <string name="str_validate_password">Please Enter Valid Password</string>
+    <string name="str_title">Title :</string>
+    <string name="str_logout">Logout</string>
+    <string name="str_logout_message">You are successfully logout</string>
+    <string name="str_details">Details</string>
+</resources>
