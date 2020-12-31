@@ -20,7 +20,7 @@
             android:name=".ui.HomeActivity"
             android:label="@string/str_home" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.LoginActivity"
             android:label="@string/str_login"
             android:windowSoftInputMode="adjustPan" />
         <activity

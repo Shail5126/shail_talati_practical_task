@@ -3,7 +3,6 @@ package com.shail.talati.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import com.shail.talati.R
 import com.shail.talati.utils.SharedPreferance
@@ -36,7 +35,7 @@ class DetailsActivity : AppCompatActivity() {
         }
         btnLogout.setOnClickListener {
             SharedPreferance.deleteAllPreferences()
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             Toast.makeText(this,resources.getString(R.string.str_logout_message), Toast.LENGTH_SHORT).show()
