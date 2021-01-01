@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.text.Editable
+import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
@@ -18,7 +19,7 @@ import java.util.regex.Pattern
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
     var context: Context? = null
-    var activity:LoginActivity? = null
+    var activity: LoginActivity? = null
     var view: View? = null
 
     var email = ObservableField<String>("")
@@ -29,44 +30,60 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     var passwordError = ObservableField<String>("")
 
 
+    init {
+        this.context = application
+    }
 
-    fun setEmail(text : Editable){
+    fun setEmail(text: Editable) {
         this.email.set(text.toString())
     }
 
-    fun setPassword(text: Editable){
+    fun setPassword(text: Editable) {
         this.password.set(text.toString())
     }
-    fun loginOnClick(){
-        SharedPreferance.setValue("email", email.get()!!.trim())
-        SharedPreferance.setValue("password", password.get()!!.trim())
-        val intent = Intent(context, HomeActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        context!!.startActivity(intent)
+
+    fun loginOnClick() {
+        if (isValid()) {
+            SharedPreferance.setValue("email", email.get()!!.trim())
+            SharedPreferance.setValue("password", password.get()!!.trim())
+            val intent = Intent(activity, HomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            activity!!.startActivity(intent)
+        }
     }
 
-    fun onTextChangedEmail(s:CharSequence, start:Int, befor:Int,count:Int){
-
+    fun onTextChangedEmail(s: CharSequence, start: Int, befor: Int, count: Int) {
+        Log.e("onTextChanged", "data$s")
     }
 
     private fun isValid(): Boolean {
         var isValid = true
-        if(email.get()!!.trim().equals("")){
+        if (email.get()!!.trim().equals("")) {
             isValid = false
             emailError.set(context!!.resources.getString(R.string.str_hint_email_id))
             emailErrorVisibility.set(View.VISIBLE)
-        } else if(email.get()!!.trim().length < 10){
+        } else if (!emailValidator(email.get()!!.trim())) {
             isValid = false
-            emailError.set(context!!.resources.getString(R.string.str_hint_email_id))
+            emailError.set(context!!.resources.getString(R.string.validation_email))
+            emailErrorVisibility.set(View.VISIBLE)
+        } else if (!email.get()!!.trim().equals(
+                context!!.getString(
+                    R.string.default_email))) {
+            isValid = false
+            emailError.set(context!!.resources.getString(R.string.validation_email))
             emailErrorVisibility.set(View.VISIBLE)
         } else {
             emailError.set("")
             emailErrorVisibility.set(View.GONE)
         }
 
-        if(password.get()!!.trim().equals("")){
+        if (password.get()!!.trim().equals("")) {
             isValid = false
             passwordError.set(context!!.resources.getString(R.string.str_hint_password))
+            passwordErrorVisibility.set(View.VISIBLE)
+        } else if (!password.get()!!.trim().equals(context!!.getString(R.string.default_pass))) {
+            isValid = false
+            passwordError.set(context!!.resources.getString(R.string.valid_password))
             passwordErrorVisibility.set(View.VISIBLE)
         } else {
             passwordError.set("")

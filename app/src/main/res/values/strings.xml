@@ -17,6 +17,10 @@
     <string name="str_validate_password">Please Enter Valid Password</string>
     <string name="str_title">Title :</string>
     <string name="str_logout">Logout</string>
-    <string name="str_logout_message">You are successfully logout</string>
+    <string name="str_logout_message">You are successfully logged out</string>
     <string name="str_details">Details</string>
+    <string name="validation_email">Please Enter Correct Email ID</string>
+    <string name="valid_password">Please enter Correct Password</string>
+    <string name="default_email">hello@yopmail.com</string>
+    <string name="default_pass">Password@123</string>
 </resources>

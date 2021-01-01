@@ -35,6 +35,18 @@
         android:imeOptions="actionNext"
         android:imeActionLabel="Next" />
     </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/txtErrorEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{viewModel.emailError}"
+        android:visibility="@{viewModel.emailErrorVisibility}"
+        tools:visibility="gone"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tiEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tiEmail"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiPassword"
         android:layout_width="match_parent"
@@ -46,16 +58,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tiEmail">
-   <com.google.android.material.textfield.TextInputEditText
+   <EditText
        android:id="@+id/etPassword"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:hint="@string/str_hint_password"
-       android:afterTextChanged="@{(editable)->viewModel.setPassword(editable)}"
+       android:afterTextChanged="@{(editable) -> viewModel.setPassword(editable)}"
+       android:text="@{viewModel.password}"
        android:textStyle="normal"
        android:imeOptions="actionDone"
        android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/txtErrorPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{viewModel.passwordError}"
+        android:visibility="@{viewModel.passwordErrorVisibility}"
+        tools:visibility="gone"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tiPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tiPassword"/>
    <Button
        android:id="@+id/btnLogin"
        android:layout_width="wrap_content"
@@ -66,6 +90,7 @@
        android:focusable="true"
        app:backgroundTint="@color/colorPrimary"
        app:elevation="2dp"
+       android:onClick="@{()->viewModel.loginOnClick()}"
        android:textStyle="bold"
        android:textColor="@android:color/white"
        android:text="@string/str_login"
